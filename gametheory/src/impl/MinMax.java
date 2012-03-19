@@ -22,7 +22,6 @@ public class MinMax implements Algorithm {
 
 	}
 
-	@Override
 	public long eval(Game g, int maxDepth) {
 		if (maxDepth == 0)
 			return g.evalValue();
