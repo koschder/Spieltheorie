@@ -5,8 +5,6 @@ public interface Game {
 
 	boolean maxToMove();
 
-	boolean minToMove();
-
 	/** yields initial state */
 	Game start();
 

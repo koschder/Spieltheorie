@@ -16,4 +16,5 @@ public class MinMaxTest {
 		Game g = new SimpleTestGame(2, leafNodes);
 		assertEquals(10, new MinMax().eval(g, 5));
 	}
+
 }

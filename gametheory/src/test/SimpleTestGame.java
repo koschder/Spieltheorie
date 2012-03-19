@@ -12,9 +12,10 @@ public class SimpleTestGame implements Game {
 			throw new IllegalArgumentException(
 					"number of leaf nodes must be a multiple of the branching factor");
 
-		if (leafNodes.length == 1)
+		if (leafNodes.length == 1) {
 			utility = leafNodes[0];
-		else if ((leafNodes.length / branchingFactor) == 1) {
+
+		} else if ((leafNodes.length / branchingFactor) == 1) {
 			successors = new Game[leafNodes.length];
 			for (int i = 0; i < leafNodes.length; i++) {
 				successors[i] = new SimpleTestGame(1, leafNodes[i]);
@@ -44,12 +45,9 @@ public class SimpleTestGame implements Game {
 
 	@Override
 	public boolean maxToMove() {
-		return true;
-	}
-
-	@Override
-	public boolean minToMove() {
-		return false;
+		if (terminal())
+			return true;
+		return !expand()[0].maxToMove();
 	}
 
 	@Override
