@@ -19,8 +19,24 @@ public class SimpleTestGame implements Game {
 			for (int i = 0; i < leafNodes.length; i++) {
 				successors[i] = new SimpleTestGame(1, leafNodes[i]);
 			}
+		} else {
+			int nodesPerBranch = leafNodes.length / branchingFactor;
+			successors = new Game[branchingFactor];
+			for (int i = 0; i < branchingFactor; i++) {
+				successors[i] = new SimpleTestGame(branchingFactor, subArray(
+						leafNodes, i * nodesPerBranch, i * nodesPerBranch
+								+ nodesPerBranch));
+			}
 		}
 
+	}
+
+	private long[] subArray(long[] array, int startPos, int lastPos) {
+		long[] subArray = new long[lastPos - startPos];
+		for (int i = 0; i < subArray.length; i++) {
+			subArray[i] = array[i + startPos];
+		}
+		return subArray;
 	}
 
 	private Game[] successors;
@@ -82,4 +98,8 @@ public class SimpleTestGame implements Game {
 		return 0;
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(utility());
+	}
 }
