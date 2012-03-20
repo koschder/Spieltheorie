@@ -14,8 +14,7 @@ public class AlphaBetaTest {
 		long[] leafNodes = new long[] { 10, 11, 9, 12, 14, 15, 13, 14, 5, 2, 4,
 				1, 3, 22, 20, 21 };
 		Game g = new SimpleTestGame(2, leafNodes);
-		assertEquals(10,
-				new AlphaBeta().eval(g, Long.MIN_VALUE, Long.MAX_VALUE, 5));
+		assertEquals(10, new AlphaBeta().eval(g, 5));
 	}
 
 }
